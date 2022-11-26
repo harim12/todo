@@ -1,0 +1,42 @@
+<p >
+	<ngb-alert class="alert" [type]="alertRegisteredSuccess.type" *ngIf = "alertRegisteredSuccessBool" (closed)="close(alertRegisteredSuccess)">{{ alertRegisteredSuccess.message }}</ngb-alert>
+</p>
+<p >
+	<ngb-alert class="alert" [type]="alertFillFields.type" *ngIf = "alertFillFieldsBool" (closed)="close(alertFillFields)">{{ alertFillFields.message }}</ngb-alert>
+</p>
+<p >
+	<ngb-alert class="alert" [type]="alertEmailAlreadyExists.type" *ngIf = "alertEmailAlreadyExistsBool" (closed)="close(alertEmailAlreadyExists)">{{ alertEmailAlreadyExists.message }}</ngb-alert>
+</p>
+<p >
+	<ngb-alert class="alert" [type]="alertSomthingWentWrong.type" *ngIf = "alertSomthingWentWrongBool" (closed)="close(alertEmailAlreadyExists)">{{ alertSomthingWentWrong.message }}</ngb-alert>
+</p>
+
+
+<div class="container">
+  <div class="login-page">
+    <div class="form">
+      <div class="login">
+        <div class="login-header">
+          <h3>Register!!</h3>
+          <p>Please enter your credentials to login.</p>
+        </div>
+      </div>
+      <form class="login-form" [formGroup] = "registerForm" (ngSubmit) ="submitForm()">
+        <input type="text" [class.is-invalid] = "registerForm.get('username').invalid && registerForm.get('username').touched"  formControlName = "username" placeholder="username"/>
+        <div *ngIf = "registerForm.get('username').invalid && registerForm.get('username').touched">
+          <p class=" requiredUsername" *ngIf = "registerForm.get('username').errors?.['required'] && registerForm.get('username').touched">username is required</p>
+          <p class=" minLengthUsername" *ngIf = "registerForm.get('username').errors?.['minlength'] && registerForm.get('username').touched">username must be at least 3 characters</p>
+        </div>
+        <input type="text" [class.is-invalid] = "registerForm.get('email').invalid && registerForm.get('email').touched"  formControlName = "email" placeholder="email"/>
+        <div *ngIf = "registerForm.get('email').invalid && registerForm.get('email').touched">
+          <p class=" requiredEmail" *ngIf = "registerForm.get('email').errors?.['required'] && registerForm.get('email').touched">email is required</p>
+          <p class=" emailFormat" *ngIf = "registerForm.get('email').errors?.['email'] && registerForm.get('email').touched">Enter the right format of email</p>
+        </div>
+        <input type="password" [class.is-invalid] = "registerForm.get('password').invalid && registerForm.get('password').touched"  formControlName = "password" placeholder="password"/>
+        <p class="requiredPassword" *ngIf = "registerForm.get('password').invalid && registerForm.get('password').touched">password is required</p>
+        <button  [disabled] = "!registerForm.valid" [class.cursorNone]="!registerForm.valid">Register</button>
+        <p class="message">Not registered? <a routerLink = "/login">Already have an account</a></p>
+      </form>
+    </div>
+  </div>
+</div>

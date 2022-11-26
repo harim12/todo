@@ -1,0 +1,203 @@
+@import '../../styles.scss';
+.dialgue-container{
+    width: 490px;
+    height: 190px;
+    position: relative;
+
+
+    .top-section{
+        h4{
+            color:#973ba3;
+            margin-left: 140px;
+        }
+        textarea{
+            padding: 10px ;
+            margin-top: 25px;
+            width: 100%;
+            background-color: rgba(#973ba3,0.1);
+            border-color:#5a1e61;
+            border: none;
+            outline: 0;
+        }
+        textarea:active{
+            border-color:#5a1e61;
+        }
+
+        margin-bottom: 55px;
+        .icon{
+            width: 20px;
+            height: 50px;
+            color: #973ba3;
+        }
+        .todo-modify{
+            margin-top: 20px;
+            margin-left:-25px;
+            width: 400px;
+            height: 100px;
+            resize: none;
+        }
+        
+        .icon-close{
+            position: absolute;
+            top: -15px;
+            right: -5px;
+            font-size: 29px;
+            cursor: pointer;
+        }
+
+    }
+    .bottom-section{
+        margin-top: -30px;
+        width: 400px;
+       
+       display: flex;
+        
+        .modify{
+            margin-top: 20px;
+            a{
+                text-decoration: none;
+                color: #444444;
+                margin-left: 20px;
+                margin-top: 20px !important;
+                font-size: 20px;
+                color: $purple;
+            }
+            .icon-add{
+                color: #444444;
+                font-size: 20px;
+                color: $purple;
+            }
+        }
+        .confirm-btns{
+        
+            .btn{
+                margin-right: 10px;
+            }
+            .save-btn{
+                background-color: #973ba3;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                color: white;
+            }
+
+            .cancel-btn{
+                position: absolute;
+                bottom: 0;
+                right: 120px;
+                border-color: #973ba3;
+                color: #973ba3;
+                     
+                
+            }
+        }
+        .date-icon{
+            margin-right: 20px;
+        }
+    }
+}
+.daysRappel{
+    color: rgb(95, 93, 93);
+    font-size: 13px;
+    font-weight: 600;
+}
+.date-rappel{
+    // margin-left: 10px;
+}
+input.icon{
+    border :none !important;
+     background-color: transparent;
+    border: none;
+    border-color: transparent;
+    width: 20px;
+}
+input:focus{
+    border: none;
+    width: 20px;
+    border-color: transparent;
+}
+input[type=date]:required:invalid::-webkit-datetime-edit {
+    border: none;
+    color: transparent;
+}
+input[type=date]:focus::-webkit-datetime-edit {
+    border: none;
+    color: black !important;
+    opacity: 0;
+    width: 20px;
+    border-color: transparent;
+
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+   
+    opacity: 1;
+    display: block;
+   
+    width: 20px;
+    height: 20px;
+    color: transparent;
+  
+    border: none;
+    border-color: transparent;
+}
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+   
+    opacity: 1;
+    display: block;
+    background: url(../../assets/images/bell.svg) no-repeat;
+    width: 20px;
+    height: 20px;
+    color: transparent;
+  
+    border: none;
+    border-color: transparent;
+}
+input[type="date"]:focus::-webkit-calendar-picker-indicator {
+    border: none;
+    border-color: transparent;
+}
+
+
+@media screen and (max-width:680px) {
+    .dialgue-container{
+        width: 220px !important;
+        height: 290px;
+        overflow: hidden;
+    }
+    textarea{
+        width: 100% !important;
+    }
+    .icon-close{
+        position: absolute;
+        top: -15px;
+        right: -80px !important;
+        font-size: 29px;
+        cursor: pointer;
+    }
+    .top-section h4{
+        margin-left: 0px !important;
+    }
+    .icon-close{
+        margin-right: 80px !important;
+    }
+    .save-btn{
+        position: absolute;
+        bottom: 10px !important;
+        left: 0;
+        width: 100%;
+    }
+    .cancel-btn{
+        position: absolute;
+        bottom: 60px !important;
+         left: 0px;
+         border-color: #973ba3;
+         color: #973ba3;
+         width: 100%;
+    }
+}
+
+
+
+
+
+

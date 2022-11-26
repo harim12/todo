@@ -1,0 +1,44 @@
+<div class="navbar-wrapper">
+  <nav>
+    <div class="content">
+      <!-- LEFT SIDE -->
+      <div class="brand-name left">
+        <a href="#">Todo
+        </a>
+      </div>
+      <!-- CENTER -->
+      <div class="center">
+        <input type="checkbox" id="display-search" />
+        <label for="display-search" class="search-icon">
+          <i
+            class="fa-sharp fa-solid fa-magnifying-glass search-icon-input"
+          ></i>
+        </label>
+
+       
+          <form class="navbar-search-box" [formGroup] = "searchForm" (ngSubmit) = "submit()">
+            <input type="text"  formControlName = "task" />
+            <button type="submit" class="enter-btn">
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </button>
+          </form>
+        </div>
+      
+      <!-- RIGHT SIDE -->
+      <div class="right">
+        <ul class="navbar-link">
+          <li class="deconnexion" (click) = "loggoutUser()">
+            <a href="#"
+              ><i class="fa-solid fa-right-from-bracket icon"></i><span class="logout-header">Logout</span> </a
+            >
+          </li>
+          <li>
+            <div class="header-user">
+              <p>{{firstLetterUserName}}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

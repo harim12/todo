@@ -1,0 +1,20 @@
+<div class="chartContainer">
+  <form [formGroup]="typeProductivity" (ngSubmit)="onSubmit()" class="typeProd">
+    <select name="languages" id="lang" formControlName="type" onchange="onSubmit()" class="typeProdSelect">
+      <option value="monthProd" class="opt">month productivity</option>
+      <option value="weekProd"  class="opt" >week productivity</option>
+    </select>
+    <button  type="submit" value="Submit" class="typeProdBtn" ><i class="fa-solid fa-magnifying-glass"></i></button>
+  </form>
+
+  <app-week-productivity
+    [todos]="todosP"
+    [completedInTimeTodos]="completedInTimeTodosP"
+    *ngIf="isWeek"
+  ></app-week-productivity>
+  <app-month-productivity
+    [todos]="todosP"
+    [completedInTimeTodos]="completedInTimeTodosP"
+    *ngIf="isMonth"
+  ></app-month-productivity>
+</div>

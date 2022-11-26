@@ -1,0 +1,113 @@
+<div class="todos-container">
+  <div class="todos-top-content">
+    <h1>Today</h1>
+    <p class="currentDay">{{currentDay}}</p>
+    <p>{{text}}</p>
+  </div>
+  
+  <div class="todos-bottom-content">
+    <div class="add-todo">
+      <form [formGroup]="todoForm" (ngSubmit) = "onSubmit()">
+        <input
+          
+          type="text"
+          formControlName="task"
+          placeholder="Ajouter une tache"
+          class="add-input"
+        />
+
+        <hr />
+        <div class="add-bottom-container">
+          <div class="add-bottom">
+            <div class="calendar-rappel">
+              <div class="date date-echeance">
+                <input
+                  id="date"
+                  type="date"
+                  formControlName="date"
+                  class="add-icon"
+                />
+                <span class="daysRappel" *ngIf="notNullAdd(todoForm.value.date)">{{ formatDate(todoForm.value.date) }}</span>
+              </div>
+              <div class="date date-rappec:\Users\rimha\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\code\electron-sandbox\workbench\workbench.htmll">
+                <input
+                  type="datetime-local"
+                  formControlName="rappel"
+                  class="rappel add-icon rappel-input"
+                />
+                <span class="daysRappel rappl-span" *ngIf="notNullAdd(todoForm.value.rappel)">{{formatRappel(todoForm.value.rappel) }}</span>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="add-todo-btn"
+              [disabled]="!todoForm.valid"
+              [ngClass]="!todoForm.valid ? 'cursorNone' : ''"
+            >
+           Add
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="todos">
+      <div class=" " *ngFor="let todo of todos; let i = index" >
+       
+        <div  class = "todo-content-container todo" *ngIf="isToday(todo)" >
+          <div class="todo-content">
+            <div class="todo-left">
+              <div class="form-check wrapper">
+                <form class="form-checkbox">
+                  <input
+                    class="checkbox"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckChecked"
+                    (click)="isCompleted(todo)"
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">{{
+                    todo.task
+                  }}</label>
+                </form>
+              </div>
+            </div>
+            <div class="todo-right">
+              <img src="../../assets/images/star (3).png" class="important-icon" alt="#" *ngIf="!todo.important"  (click)="isImportant(todo)">
+              <img src="../../assets/images/star (1).png" class="important-icon-full" alt="#" *ngIf="todo.important"  (click)="isImportant(todo)">
+              <div class="edit-delete">
+                <i
+                  class="bi bi-pencil-square edit-delete"
+                  mat-raised-button
+                  (click)="openDialog(todo)"
+                ></i>
+                <button
+                  (click)="onDeleteButton(todo.id)"
+                  class="delete-btn edit-delete"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <hr class="line" />
+          <div class="todo-bottom">
+            <div class="todo-bottom-links">
+              <div class="date"> 
+                <i class="bi bi-calendar-week date-icon"></i>
+              <span  class="todo-date daysRappel">{{formatDate(todo.date)}}</span>
+              </div>
+              <div class="rappel">
+                <i class="bi bi-bell"></i>
+              <span class="todo-rappel daysRappel" *ngIf="notNull(todo.rappel)" >{{formatRappel(todo.rappel)}}</span>
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+     
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<p >
+	<ngb-alert class="alert" [type]="alertDangerWrongCred.type" *ngIf = "alertDangeWrongCredBool" (closed)="close(alertDangerWrongCred)">{{ alertDangerWrongCred.message }}</ngb-alert>
+</p>
+<p >
+	<ngb-alert class="alert" [type]="alertFillFields.type" *ngIf = "alertFillFieldsBool" (closed)="close(alertFillFields)">{{ alertFillFields.message }}</ngb-alert>
+</p>
+<p >
+	<ngb-alert class="alert" [type]="alertLoggedSuccess.type" *ngIf = "alertLoggedSuccessBool" (closed)="close(alertLoggedSuccess)">{{ alertLoggedSuccess.message }}</ngb-alert>
+</p>
+
+
+
+<div class="container">
+  <div class="login-page">
+    <div class="form" >
+      <div class="login">
+        <div class="login-header">
+          <h3 >LOGIN</h3>
+          <p>Please enter your credentials to login.</p>
+        </div>
+      </div>
+     
+      <form class="login-form" [formGroup] = "loginForm" (ngSubmit) ="submitForm()">
+        <input type="email" [class.is-invalid] = "loginForm.get('email').invalid && loginForm.get('email').touched"  formControlName = "email" placeholder="email"/>
+        <div *ngIf = "loginForm.get('email').invalid && loginForm.get('email').touched">
+          <p class=" requiredEmail" *ngIf = "loginForm.get('email').errors?.['required'] && loginForm.get('email').touched">email is required</p>
+          <p class=" emailFormat" *ngIf = "loginForm.get('email').errors?.['email'] && loginForm.get('email').touched">Enter email in the right format</p>
+        </div>
+        <input type="password" [class.is-invalid] = "loginForm.get('password').invalid && loginForm.get('password').touched" formControlName = "password" placeholder="password"/>
+        <p class="small" *ngIf = "loginForm.get('password').invalid && loginForm.get('password').touched">password is required</p>
+        <button   [class.cursorNone]="!loginForm.valid" class="loginBtn">login</button>
+        <p class="message">Not registered? <a routerLink = "/register">Create an account</a></p>
+      </form>
+    </div>
+  </div>
+  
+
+</div>
